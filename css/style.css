@@ -1,0 +1,1622 @@
+/* common */
+h1,h2,h3 {
+    font-family: 'Yellowtail', cursive;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+a {
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+    .header {
+        max-width: 450px;
+        width: 100%;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        z-index: 11;
+    }
+    .header-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-h1 {
+        margin-left: 8%;
+        width: 100px;
+        height: 100px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .openbtn1 {
+        /*ボタン内側の基点となるためrelativeを指定。
+ 追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+        position: relative;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        margin-right: 8%;
+    }
+
+    /*ボタン内側*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 14px;
+        height: 2px;
+        border-radius: 5px;
+        background: #000;
+        width: 58%;
+    }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:10px;
+        background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:19px;
+        background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:28px;
+         background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(3)::after {
+        content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+        position: absolute;
+        top: 6px;
+        left: 0;
+        color: #000;
+        font-size: 70%;
+        color: #f77604;
+        text-transform: uppercase;
+    }
+
+    /*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+    .header-wrap.active {
+        background-color: #fff;
+    }
+    .openbtn1.active span:nth-of-type(1) {
+        top: 14px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .openbtn1.active span:nth-of-type(3){
+        top: 26px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(3)::after {
+        content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+        transform: translateY(0) rotate(-45deg);
+        top:5px;
+        left:4px;
+    }
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .humbergerIcon-menu.active {
+        display: block;
+        visibility: visible;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+    }
+    .humbergerIcon-Lists {
+        width: 100%;
+        padding-top: 40%;
+    }
+    .humbergerIcon-li {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .humbergerIcon-li a {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+    .humbergerIcon-li a:hover {
+        font-size: 20px;
+        background-color: #bcd537;
+        padding: 7px;
+        border-radius: 10px;
+    }
+     /* home */
+    .home {
+        max-width: 450px;
+        width: 100%;
+    }
+    .mv {
+        width: 100%;
+        height: 40vh;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+      /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    }
+    /*　背景画像設定　*/ 
+    /* .slider-item01 {
+        background:url(../img/slide-item01.png);
+    }
+    
+    .slider-item02 {
+        background:url(../img/slide-item02.png);
+    }
+    
+    .slider-item03 {
+        background:url(../img/slide-item03.png);
+    } */
+    
+    .slider-item img{
+        width: 100vw;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        height: 40vh;/* 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    .mv-comment {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        transform: translate(-30%, -30%);
+        z-index: 5;
+        background-color: #fff;
+        padding: 1%;
+        border-radius: 10px;
+    }
+    .mv-comment p {
+        color: #f77604;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    
+     /* concept */
+     .concept {
+        max-width: 450px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .concept-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 10% 0;
+    }
+    .concept-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 5%;
+    }
+    .concept-p {
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    /* wanted */
+    .wanted {
+        max-width: 450px;
+        width: 100%;
+        background-color: #fff 
+    }
+    .wanted-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 10% 0;
+    }
+    .wanted-h2 {
+        color: #f56c57;
+        font-size: 32px;
+        margin-bottom: 5%;
+    }
+    .wanted-p {
+        color: #000;
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 5%;
+    }
+    .h2-tel1 {
+        font-size: 28px;
+        margin: 0 auto;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 100%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel1 a {
+        color: #000;
+    }
+    .h2-tel1:hover {
+        background-color: #f56c57;
+    }
+
+    /* news1 */
+    .news1 {
+        max-width: 450px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .news1-inner{
+        width: 60%;
+        margin: 0 auto;
+        padding: 10% 0;
+    }
+    .news1-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 5%;
+    }
+    .news1-table {
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 5%;
+    }
+    .news1-table tr {
+        display: block;
+    }
+    .news1-table th {
+        width: fit-content;
+        display: block;
+        text-align: left;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-table td {
+        width: 100%;
+        display: block;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-btn {
+        width: fit-content;
+        border: 2px solid #f77604;
+        border-radius: 10px;
+        padding: 1%;
+        margin-left: auto;
+    }
+    .news1-btn:hover {
+        background-color: #f56c57;
+    }
+    .news1-btn a {
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+     
+
+    /* footer */
+    .footer {
+        max-width: 450px;
+        width: 100%;
+        background-color: #31a9b8;
+        padding: 3% 0;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 180px;
+        margin: auto;
+    }
+    .footer-h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 24px;
+        margin: 2% 0;
+        text-align: center;
+        color: #f77604;
+    }
+    .footer-p {
+        font-size: 18px;
+        padding: 0 3%;
+        line-height: 1.5;
+        text-align: center;
+    }
+    .h2-tel {
+        font-size: 20px;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 20px;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel:hover {
+        background-color: #f56c57;
+    }
+    .fa-phone {
+        color: #f77604;
+        font-size: 18px;
+    }
+    .float-wrap {
+        width: 100%;
+        padding: 3% 0;
+    }
+    .left-wrap {
+        width: 80%;
+        margin: 0 auto 5% auto;
+    }
+    .right-wrap {
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* news */
+    .news {
+        max-width: 450px;
+        width: 100%;
+        background-color: #fff;
+        padding-top: 100px;
+    }
+    .news-inner {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-h2 {
+        color: #f77604;
+        font-size: 30px;
+        margin-bottom: 2%;
+        text-align: center;
+    }
+    .news-title {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #31a9b8;
+    }
+    .news-table {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .news-table tr {
+        display: block;
+    }
+    .new-table-th {
+        display: block;
+        width: fit-content;
+        text-align: left;
+        font-size: 18px;
+    }
+    .news-table-td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    .news-wrap {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-table1 {
+        width: 100%;
+        margin-bottom: 5%;
+        table-layout: fixed;
+        border-collapse: separate;
+        /* border-spacing: 0 20px; */
+    }
+    .news-table1 tr {
+        display: block;
+    }
+    .news-table1 th {
+        display: block;
+        width: fit-content;
+        font-size: 16px;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    .news-table1 td {
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: 1px solid #000;
+        margin-bottom: 20px;
+    }
+
+
+    /* course */
+    .course {
+        max-width: 450px;
+        width: 100%;
+        background-color:  #fff;
+        padding-top: 100px;
+    }
+    .course-inner {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .course-h2 {
+        text-align: center;
+        color: #f77604;
+        font-size: 36px;
+        margin: 3% auto;
+    }
+    .course-wrap {
+        margin: 0 auto;
+    }
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 96%;
+        padding: 2% 0;
+        /* height: 70vh; */
+        /* max-width: 900px; */
+        display: flex;
+        flex-direction: column;
+        margin: 5% auto;
+    }
+    .accordion-area section {
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #231b12;
+        width: 200px; 
+        margin: 0 auto 5% auto;   
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+        color: #fff;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #fff;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #ffff;
+        margin: 0 auto 2% auto;
+        padding: 2%;
+        width: 180px;
+        height: 250px;
+    }
+    .course-p {
+        color: #f56c57;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 3%;
+    }
+}
+
+/* TAB */
+@media screen and (min-width: 450px) and (max-width: 850px) {
+    .header {
+        max-width: 850px;
+        width: 100%;
+        height: 120px;
+        position: fixed;
+        top: 0;
+        z-index: 11;
+    }
+    .header-wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-h1 {
+        margin-left: 8%;
+        width: 100px;
+        height: 100px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .openbtn1 {
+        /*ボタン内側の基点となるためrelativeを指定。
+ 追従するナビゲーションの場合はfixed＋top、rightといった位置をセットで指定*/
+        position: relative;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        margin-right: 8%;
+    }
+
+    /*ボタン内側*/
+    .openbtn1 span{
+        display: inline-block;
+        transition: all .4s;/*アニメーションの設定*/
+        position: absolute;
+        left: 14px;
+        height: 2px;
+        border-radius: 5px;
+        background: #000;
+        width: 58%;
+    }
+
+    .openbtn1 span:nth-of-type(1) {
+        top:10px;
+        background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(2) {
+        top:19px;
+        background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(3) {
+        top:28px;
+         background-color: #f77604;
+    }
+
+    .openbtn1 span:nth-of-type(3)::after {
+        content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+        position: absolute;
+        top: 6px;
+        left: 0;
+        color: #000;
+        font-size: 80%;
+        color: #f77604;
+        text-transform: uppercase;
+    }
+
+    /*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+    .header-wrap.active {
+        background-color: #fff;
+    }
+    .openbtn1.active span:nth-of-type(1) {
+        top: 14px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .openbtn1.active span:nth-of-type(3){
+        top: 26px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+    }
+
+    .openbtn1.active span:nth-of-type(3)::after {
+        content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+        transform: translateY(0) rotate(-45deg);
+        top:5px;
+        left:4px;
+    }
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .humbergerIcon-menu.active {
+        display: block;
+        visibility: visible;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+    }
+    .humbergerIcon-Lists {
+        width: 100%;
+        padding-top: 40%;
+    }
+    .humbergerIcon-li {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .humbergerIcon-li a {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+    }
+    .humbergerIcon-li a:hover {
+        font-size: 20px;
+        background-color: #bcd537;
+        padding: 7px;
+        border-radius: 10px;
+    }
+     /* home */
+    .home {
+        max-width: 850px;
+        width: 100%;
+    }
+    .mv {
+        width: 100%;
+        height: 40vh;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+      /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+    }
+    /*　背景画像設定　*/ 
+    /* .slider-item01 {
+        background:url(../img/slide-item01.png);
+    }
+    
+    .slider-item02 {
+        background:url(../img/slide-item02.png);
+    }
+    
+    .slider-item03 {
+        background:url(../img/slide-item03.png);
+    } */
+    
+    .slider-item img{
+        width: 100vw;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        height: 40vh;/* 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    .mv-comment {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        transform: translate(-30%, -30%);
+        z-index: 5;
+        background-color: #fff;
+        padding: 1%;
+        border-radius: 20px;
+    }
+    .mv-comment p {
+        color: #f77604;
+        font-size: 36px;
+        font-weight: bold;
+    }
+    
+     /* concept */
+     .concept {
+        max-width: 850px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .concept-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .concept-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .concept-p {
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    /* wanted */
+    .wanted {
+        max-width: 850px;
+        width: 100%;
+        background-color: #fff 
+    }
+    .wanted-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .wanted-h2 {
+        color: #f56c57;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .wanted-p {
+        color: #000;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .h2-tel1 {
+        font-size: 28px;
+        margin: 0 auto;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 55%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel1 a {
+        color: #000;
+    }
+    .h2-tel1:hover {
+        background-color: #f56c57;
+    }
+    .fa-phone {
+        color: #f77604;
+        font-size: 24px;
+    }
+
+    /* news1 */
+    .news1 {
+        max-width: 850px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .news1-inner{
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .news1-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .news1-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    .news1-table tr {
+        display: block;
+    }
+    .news1-table th {
+        width: fit-content;
+        display: block;
+        text-align: left;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-table td {
+        width: 100%;
+        display: block;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-btn {
+        width: fit-content;
+        border: 2px solid #f77604;
+        border-radius: 10px;
+        padding: 1%;
+        margin-left: auto;
+    }
+    .news1-btn:hover {
+        background-color: #f56c57;
+    }
+    .news1-btn a {
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+     
+
+    /* footer */
+    .footer {
+        max-width: 850px;
+        width: 100%;
+        background-color: #31a9b8;
+        padding: 3% 0;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 180px;
+        margin: auto;
+    }
+    .footer-h2 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 24px;
+        margin: 4% 0 1% 0;
+        color: #f77604;
+    }
+    .footer-p {
+        font-size: 20px;
+        margin: 0% 0% 2% 0;
+    }
+    .h2-tel {
+        font-size: 28px;
+        margin:0 auto;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 80%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel:hover {
+        background-color: #f56c57;
+    }
+    .fa-phone {
+        color: #f77604;
+        font-size: 20px;
+    }
+    .float-wrap {
+        width: 80%;
+        height: 370px;
+        margin: 0 auto;
+    }
+    .left-wrap {
+        float: left;
+        width: 50%;
+        height: 300px;
+        margin: 3% 0 0 0;
+    }
+    .right-wrap {
+        float: right;
+        width: 50%;
+        height: 300px;
+        position: relative;
+        display: block;
+        margin: 3% 0 2% 0;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* news */
+    .news {
+        max-width: 850px;
+        width: 100%;
+        background-color: #fff;
+        padding-top: 100px;
+    }
+    .news-inner {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 2%;
+        text-align: center;
+    }
+    .news-title {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #31a9b8;
+    }
+    .news-table {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .news-table tr {
+        display: block;
+    }
+    .new-table-th {
+        display: block;
+        width: fit-content;
+        text-align: left;
+        font-size: 18px;
+    }
+    .news-table-td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    .news-wrap {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-table1 {
+        width: 100%;
+        margin-bottom: 5%;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 20px;
+    }
+    .news-table1 th {
+        width: 30%;
+        font-size: 14px;
+        text-align: left;
+    }
+    .news-table1 td {
+        width: 70%;
+        font-size: 14px;
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: 1px solid #000;
+    }
+
+
+    /* course */
+    .course {
+        max-width: 850px;
+        width: 100%;
+        background-color:  #fff;
+        padding-top: 100px;
+    }
+    .course-inner {
+        width: 70%;
+        margin: 0 auto;
+    }
+    .course-h2 {
+        text-align: center;
+        color: #f77604;
+        font-size: 36px;
+        margin: 3% auto;
+    }
+
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 96%;
+        padding: 5% 0;
+        /* height: 70vh; */
+        /* max-width: 900px; */
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 5%;
+    }
+
+    .accordion-area section {
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #231b12;
+        width: 250px;    
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+        color: #fff;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #fff;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #ffff;
+        margin: 0 auto 2% auto;
+        padding: 2%;
+        width: 180px;
+        height: 250px;
+    }
+    .course-p {
+        color: #f56c57;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 3%;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 850px) {
+    body {
+        max-width: 1920px;
+        margin: auto;
+    }
+    .header {
+        max-width: 1920px;
+        width: 100%;
+        height: 100px;
+        background-color: transparent;
+        z-index: 10;
+        position: fixed;
+    }
+    .header-wrap {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255,255,255,0);
+    }
+    .header-h1 {
+        /* margin-left: 8%; */
+        width: 150px;
+        height: 100px;
+    }
+    .logo {
+        width: 100%;
+        object-fit: cover;
+    }
+    .nav-menu {
+        clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+        background-color: #fff;
+        flex-basis: 50%;
+        padding: 1%;
+    }
+    .nav-menu ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .list-item {
+        width: 100%;
+    }
+    .list-item a{
+        color: #f77604;
+        font-size: 20px;
+        font-weight: bold;
+        width: 100%;
+    }
+    .list-item a:hover {
+        background-color: #31a9b8;
+        border-radius: 10px;
+        padding: 3%;
+    }
+    .openbtn1 {
+        display: none;
+    }
+    .humbergerIcon-menu {
+        display: none;
+    }
+    .home {
+        max-width: 1920px;
+        width: 100%;
+    }
+    .mv {
+        width: 100%;
+        /* margin: auto; */
+        height: 100vh;
+    }
+    .slider {
+        position:relative;
+        z-index: 1;
+    }
+    .slider-item img{
+        width: 100vw;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+        height: 100vh;
+        /* height: 15px; 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする */
+        /* background-repeat: no-repeat;背景画像をリピートしない */
+        /* background-position: center;背景画像の位置を中央に */
+        /* background-size: cover;背景画像が.slider-item全体を覆い表示 */
+        object-fit: cover;
+    }
+    .mv-comment {
+        position: absolute;
+        bottom: 30%;
+        left: 20%;
+        transform: translate(-30%, -30%);
+        z-index: 5;
+        background-color: #fff;
+        padding: 1%;
+        border-radius: 20px;
+    }
+    .mv-comment p {
+        color: #f77604;
+        font-size: 40px;
+        font-weight: bold;
+    }
+    
+    /* concept */
+    .concept {
+        max-width: 1920px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .concept-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .concept-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .concept-p {
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    /* wanted */
+    .wanted {
+        max-width: 1920px;
+        width: 100%;
+        background-color: #fff 
+    }
+    .wanted-inner {
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .wanted-h2 {
+        color: #f56c57;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .wanted-p {
+        color: #000;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .h2-tel1 {
+        font-size: 28px;
+        margin: 0 auto;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 30%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel1 a {
+        color: #000;
+    }
+    .h2-tel1:hover {
+        background-color: #f56c57;
+    }
+    /* .fa-phone {
+        color: #f77604;
+        font-size: 24px;
+    } */
+
+    /* news1 */
+    .news1 {
+        max-width: 1920px;
+        width: 100%;
+        background-color: #231b12;
+    }
+    .news1-inner{
+        width: 60%;
+        margin: 0 auto;
+        padding: 5% 0;
+    }
+    .news1-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 1%;
+    }
+    .news1-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+    .news1-table th {
+        width: 20%;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-table td {
+        width: 80%;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .news1-btn {
+        width: fit-content;
+        border: 2px solid #f77604;
+        border-radius: 10px;
+        padding: 1%;
+        margin-left: auto;
+    }
+    .news1-btn:hover {
+        background-color: #f56c57;
+    }
+    .news1-btn a {
+        color: #fff;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+     
+
+    /* footer */
+    .footer {
+        max-width: 1920px;
+        width: 100%;
+        background-color: #31a9b8;
+        padding: 3% 0;
+    }
+    .header-h11 {
+        height: 100px;
+        width: 180px;
+        margin: auto;
+    }
+    .footer-h2 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .footer-h3 {
+        font-size: 24px;
+        margin: 4% 0 1% 20%;
+        color: #f77604;
+    }
+    .footer-p {
+        font-size: 20px;
+        margin: 0% 0% 2% 25%;
+    }
+    .h2-tel {
+        font-size: 28px;
+        margin-left: 25%;
+        background-color: #d9eaec;
+        border: 2px solid #000;
+        border-radius: 32px;
+        width: 50%;
+        text-align: center;
+        padding: 1%;
+    }
+    .h2-tel a {
+        color: #000;
+    }
+    .h2-tel:hover {
+        background-color: #f56c57;
+    }
+    .fa-phone {
+        color: #f77604;
+        font-size: 24px;
+    }
+    .float-wrap {
+        width: 100%;
+        height: 370px;
+    }
+    .left-wrap {
+        float: left;
+        width: 40%;
+        height: 300px;
+        margin: 3% 0 0 10%;
+    }
+    .right-wrap {
+        float: right;
+        width: 40%;
+        height: 300px;
+        position: relative;
+        display: block;
+        margin: 3% 10% 2% 0;
+    }
+    .right-wrap iframe{
+        position: absolute;
+        width: 80%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    small {
+        font-size: 8px;
+    }
+
+    /* news */
+    .news {
+        max-width: 1920px;
+        width: 100%;
+        background-color: #fff;
+        padding-top: 100px;
+    }
+    .news-inner {
+        width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+    }
+    .news-h2 {
+        color: #f77604;
+        font-size: 36px;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+    .news-title {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: #31a9b8;
+    }
+    .news-table {
+        width: 100%;
+        margin-bottom: 5%;
+        table-layout: fixed;
+        border-collapse: separate;
+    }
+    .news-table tr {
+        display: block;
+    }
+    .news-table-th {
+        display: block;
+        width: fit-content;
+        text-align: left;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .news-table-td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 20px;
+        line-height: 1.5;
+        padding: 0 3%;
+    }
+    .news-wrap {
+        width: 550px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-table1 {
+        width: 100%;
+        margin-bottom: 5%;
+        table-layout: fixed;
+        border-collapse: separate;
+        border-spacing: 0 20px;
+    }
+    .news-table1 th {
+        width: 20%;
+        font-size: 16px;
+        text-align: left;
+    }
+    .news-table1 td {
+        width: 80%;
+        font-size: 16px;
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: 1px solid #000;
+    }
+
+
+    /* course */
+    .course {
+        max-width: 1920px;
+        width: 100%;
+        background-color:  #fff;
+        padding-top: 100px;
+    }
+    .course-inner {
+        width: 1028px;
+        margin: 0 auto;
+    }
+    .course-h2 {
+        text-align: center;
+        color: #f77604;
+        font-size: 36px;
+        margin: 3% auto;
+    }
+
+    /*==================================================
+    アコーディオンのためのcss
+    ===================================*/
+
+    /*アコーディオン全体*/
+    .accordion-area{
+        list-style: none;
+        width: 96%;
+        padding: 2% 0;
+        /* height: 50vh; */
+        /* max-width: 900px; */
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .accordion-area section {
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        background-color: #231b12;
+        width: 200px;    
+    }
+
+    /*アコーディオンタイトル*/
+    .title {
+        position: relative;/*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: normal;
+        padding: 3% 3% 3% 50px;
+        transition: all .5s ease;
+        color: #fff;
+    }
+
+    /*アイコンの＋と×*/
+    .title::before,
+    .title::after{
+        position: absolute;
+        content:'';
+        width: 15px;
+        height: 2px;
+        background-color: #fff;
+        
+    }
+    .title::before{
+        top:48%;
+        left: 15px;
+        transform: rotate(0deg);
+        
+    }
+    .title::after{    
+        top:48%;
+        left: 15px;
+        transform: rotate(90deg);
+
+    }
+    /*　closeというクラスがついたら形状変化　*/
+    .title.close::before{
+    transform: rotate(45deg);
+    }
+
+    .title.close::after{
+    transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;/*はじめは非表示*/
+        background: #ffff;
+        margin: 0 auto 5% auto;
+        padding: 2%;
+        width: 180px;
+        height: 250px;
+    }
+    .course-p {
+        color: #f56c57;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 3%;
+    }
+
+    /* section:not(.news, .course, .home, .ac) {
+        opacity: 0;
+        transform: translateY(100px); 
+        transition: all 1.5s;
+    }
+    section:not(.news, .course, .home, .ac).scrollin {
+        opacity: 1;
+        transform: translateY(0);
+    } */
+
+}
+
+
+
